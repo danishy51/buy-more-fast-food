@@ -84,11 +84,7 @@
             border-radius: 0 0 24px 24px;
         }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .header-left { display: flex; align-items: center; gap: 12px; }
 
         .hamburger-btn {
             background: rgba(255, 255, 255, 0.08);
@@ -143,7 +139,7 @@
             font-weight: 700;
         }
 
-        /* Container & Layout */
+        /* Layout */
         .main-container {
             width: 100%;
             max-width: 1200px;
@@ -156,7 +152,7 @@
             border-radius: 28px;
             padding: 40px 25px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             background: linear-gradient(135deg, rgba(255, 71, 87, 0.1), rgba(255, 165, 2, 0.1));
             position: relative;
             overflow: hidden;
@@ -215,10 +211,9 @@
         }
         .btn-add:hover { background: var(--primary-hover); }
 
-        /* Coming Soon Placeholder Section */
         .coming-soon-box {
             border-radius: 22px;
-            padding: 30px;
+            padding: 35px 20px;
             text-align: center;
             background: rgba(255, 255, 255, 0.02);
             border: 1px dashed var(--border-glass);
@@ -239,87 +234,49 @@
 
         /* Left Side Hamburger Drawer */
         .left-drawer {
-            position: fixed;
-            top: 0;
-            left: -320px;
-            width: 300px;
-            height: 100vh;
-            z-index: 1000;
-            padding: 25px;
-            transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            background: rgba(10, 14, 23, 0.95);
-            backdrop-filter: blur(25px);
-            border-right: 1px solid var(--border-glass);
+            position: fixed; top: 0; left: -320px; width: 300px; height: 100vh; z-index: 1000;
+            padding: 25px; transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; flex-direction: column; background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(25px); border-right: 1px solid var(--border-glass);
         }
         .left-drawer.active { left: 0; }
 
         .drawer-nav-item {
-            padding: 14px 16px;
-            border-radius: 14px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border-glass);
-            color: #fff;
-            font-weight: 600;
-            margin-bottom: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: 0.2s;
+            padding: 14px 16px; border-radius: 14px; background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border-glass); color: #fff; font-weight: 600;
+            margin-bottom: 12px; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: 0.2s;
         }
         .drawer-nav-item:hover { background: rgba(255,255,255,0.12); color: var(--secondary); }
 
-        /* Modals & Overlays */
+        /* Modals & Controls */
         .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px); z-index: 2000;
+            display: none; justify-content: center; align-items: center; padding: 20px;
         }
-
         .modal-box {
-            width: 100%; max-width: 440px;
-            border-radius: 28px; padding: 35px 28px;
-            position: relative;
+            width: 100%; max-width: 440px; border-radius: 28px; padding: 35px 28px; position: relative;
             animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
-        @keyframes modalPop {
-            from { transform: scale(0.85); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
+        @keyframes modalPop { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
         .close-modal {
-            position: absolute; top: 20px; right: 20px;
-            font-size: 1.2rem; color: var(--text-muted); cursor: pointer;
-            width: 32px; height: 32px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            background: rgba(255,255,255,0.05);
+            position: absolute; top: 20px; right: 20px; font-size: 1.2rem; color: var(--text-muted); cursor: pointer;
+            width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05);
         }
 
-        /* Inputs & Buttons */
         .input-field { margin-bottom: 16px; text-align: left; }
         .input-field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
-        .input-field input, .input-field textarea {
-            width: 100%; padding: 12px 14px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border-glass);
-            border-radius: 12px; color: #fff; outline: none; font-size: 0.95rem;
+        .input-field input, .input-field textarea, .input-field select {
+            width: 100%; padding: 12px 14px; background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-glass); border-radius: 12px; color: #fff; outline: none; font-size: 0.95rem;
         }
-        .input-field input:focus, .input-field textarea:focus { border-color: var(--secondary); box-shadow: 0 0 10px rgba(255, 165, 2, 0.2); }
+        .input-field select option { background: #0a0e17; color: #fff; }
+        .input-field input:focus, .input-field textarea:focus, .input-field select:focus { border-color: var(--secondary); box-shadow: 0 0 10px rgba(255, 165, 2, 0.2); }
 
         .btn-submit {
-            width: 100%; padding: 13px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border: none; border-radius: 12px; color: #fff; font-size: 1rem; font-weight: 700;
-            cursor: pointer; margin-top: 10px;
+            width: 100%; padding: 13px; background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none; border-radius: 12px; color: #fff; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 10px;
         }
 
         /* Cart Drawer */
@@ -331,43 +288,29 @@
         .cart-items-container { flex: 1; overflow-y: auto; margin: 20px 0; display: flex; flex-direction: column; gap: 12px; }
         .cart-item-row { display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.04); padding: 12px; border-radius: 12px; }
 
-        /* Admin Dashboard */
-        .admin-dashboard { display: none; margin-bottom: 30px; padding: 20px; border-radius: 20px; border: 1px solid var(--secondary); }
-        .admin-tab-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
-        .admin-tab-btn { padding: 8px 16px; border-radius: 10px; border: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); color: #fff; cursor: pointer; font-size: 0.85rem; font-weight: 600; }
+        /* Admin Dashboard - HD Form Layout Fix */
+        .admin-dashboard { display: none; margin-bottom: 35px; padding: 25px; border-radius: 24px; border: 1px solid var(--secondary); }
+        .admin-tab-buttons { display: flex; gap: 10px; margin-bottom: 25px; }
+        .admin-tab-btn { padding: 9px 18px; border-radius: 12px; border: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); color: #fff; cursor: pointer; font-size: 0.88rem; font-weight: 600; }
         .admin-tab-btn.active { background: var(--secondary); color: #000; }
         .orders-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        .orders-table th, .orders-table td { padding: 10px; text-align: left; border-bottom: 1px solid var(--border-glass); }
+        .orders-table th, .orders-table td { padding: 12px 10px; text-align: left; border-bottom: 1px solid var(--border-glass); }
 
-        /* Theme Selector Grid */
+        .admin-form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 15px;
+        }
+
         .theme-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
         .theme-card { padding: 12px; border-radius: 12px; border: 1px solid var(--border-glass); background: rgba(255,255,255,0.04); cursor: pointer; text-align: center; font-weight: 600; font-size: 0.9rem; transition: 0.2s; }
         .theme-card:hover { background: rgba(255,255,255,0.15); border-color: var(--secondary); }
 
-        /* Footer Style */
-        footer {
-            margin-top: auto;
-            padding: 25px 20px;
-            text-align: center;
-            border-top: 1px solid var(--border-glass);
-            background: rgba(0, 0, 0, 0.3);
-        }
-        .footer-content p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-        }
-        .footer-content b {
-            color: #ffffff;
-        }
-        .footer-contact {
-            color: var(--secondary);
-            font-weight: 700;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
+        footer { margin-top: auto; padding: 25px 20px; text-align: center; border-top: 1px solid var(--border-glass); background: rgba(0, 0, 0, 0.3); }
+        .footer-content p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px; }
+        .footer-content b { color: #ffffff; }
+        .footer-contact { color: var(--secondary); font-weight: 700; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 6px; }
     </style>
 </head>
 <body data-theme="default">
@@ -376,7 +319,6 @@
     <div class="ambient-glow glow-2"></div>
 
     <div class="app-wrapper">
-        <!-- Header Navigation -->
         <header class="glass">
             <div class="header-left">
                 <button class="hamburger-btn" onclick="toggleLeftDrawer()">
@@ -395,10 +337,10 @@
         </header>
 
         <div class="main-container">
-            <!-- Admin Dashboard -->
+            <!-- ADMIN DASHBOARD -->
             <div class="admin-dashboard glass" id="adminPanel">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                    <h3 style="color:var(--secondary);"><i class="fa-solid fa-user-gear"></i> Admin Control Panel</h3>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                    <h3 style="color:var(--secondary); font-size:1.2rem;"><i class="fa-solid fa-user-gear"></i> Admin Control Panel</h3>
                     <span style="font-size:0.8rem; color:var(--text-muted)">Logged in as <b>Admin</b></span>
                 </div>
                 
@@ -407,6 +349,7 @@
                     <button class="admin-tab-btn" id="tabItemsBtn" onclick="switchAdminTab('items')">Manage Food Items</button>
                 </div>
 
+                <!-- ORDERS TAB -->
                 <div id="adminOrdersSection">
                     <div style="overflow-x:auto;">
                         <table class="orders-table">
@@ -421,65 +364,79 @@
                                 </tr>
                             </thead>
                             <tbody id="ordersTableBody">
-                                <tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No orders placed yet.</td></tr>
+                                <tr><td colspan="6" style="text-align:center; color:var(--text-muted); padding:20px;">No orders placed yet.</td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
+                <!-- ITEMS ADD/MANAGE TAB (PREMIUM UI FIX) -->
                 <div id="adminItemsSection" style="display:none;">
-                    <h4 style="margin-bottom:12px;">Add New Food Item</h4>
-                    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-bottom:15px;">
-                        <input type="text" id="newItemName" placeholder="Item Name" class="input-field" style="margin:0;">
-                        <input type="text" id="newItemEmoji" placeholder="Emoji (e.g. 🌮)" class="input-field" style="margin:0;">
-                        <input type="number" id="newItemPrice" placeholder="Price ($)" class="input-field" style="margin:0;">
-                        <input type="text" id="newItemDesc" placeholder="Description" class="input-field" style="margin:0;">
-                    </div>
+                    <h4 style="margin-bottom:18px; color:#fff; font-size:1.05rem;"><i class="fa-solid fa-plus-circle"></i> Add New Product / Fast Food Item</h4>
                     
-                    <div class="input-field" style="margin-bottom:15px;">
-                        <label><i class="fa-solid fa-image"></i> Upload Item Picture (Gallery / Computer)</label>
-                        <input type="file" id="newItemFile" accept="image/*" style="padding:8px;">
+                    <div class="admin-form-grid">
+                        <div class="input-field">
+                            <label>Target Menu Section</label>
+                            <select id="newItemCategory">
+                                <option value="main">Main Food Menu</option>
+                                <option value="combos">Family Combos & Deals</option>
+                                <option value="desserts">Desserts & Cold Shakes</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Item Name</label>
+                            <input type="text" id="newItemName" placeholder="e.g. Zinger Supreme">
+                        </div>
+                        <div class="input-field">
+                            <label>Price ($)</label>
+                            <input type="number" id="newItemPrice" step="0.01" placeholder="e.g. 6.99">
+                        </div>
+                        <div class="input-field">
+                            <label>Emoji Icon (Optional)</label>
+                            <input type="text" id="newItemEmoji" placeholder="e.g. 🍔">
+                        </div>
                     </div>
 
-                    <button class="btn-add" onclick="addNewFoodItem()" style="margin-bottom:20px;">+ Add to Menu</button>
+                    <div class="input-field" style="margin-bottom:15px;">
+                        <label>Description</label>
+                        <input type="text" id="newItemDesc" placeholder="Enter short tasty description...">
+                    </div>
+
+                    <div class="input-field" style="margin-bottom:20px;">
+                        <label><i class="fa-solid fa-image"></i> Upload Product Picture (Computer / Phone Gallery)</label>
+                        <input type="file" id="newItemFile" accept="image/*" style="padding:10px;">
+                    </div>
+
+                    <button class="btn-submit" onclick="addNewFoodItem()" style="max-width:220px;">+ Publish Item</button>
                 </div>
             </div>
 
-            <!-- Hero Banner -->
+            <!-- HERO BANNER -->
             <div class="hero-banner glass">
                 <h1>Crave It? <span>Buy More!</span></h1>
                 <p>Hot, fresh, and delicious fast food delivered straight to your doorstep.</p>
             </div>
 
-            <!-- Menu Section -->
+            <!-- SECTION 1: MAIN FOOD MENU -->
             <div class="section-title">
                 <span><i class="fa-solid fa-fire" style="color:var(--primary);"></i> Main Food Menu</span>
             </div>
-            <div class="menu-grid" id="menuGrid"></div>
+            <div class="menu-grid" id="mainMenuGrid"></div>
 
-            <!-- Combos Section (Coming Soon) -->
+            <!-- SECTION 2: FAMILY COMBOS & DEALS -->
             <div class="section-title">
                 <span><i class="fa-solid fa-boxes-packing" style="color:var(--secondary);"></i> Family Combos & Deals</span>
             </div>
-            <div class="coming-soon-box glass">
-                <span class="badge-cs">Coming Soon</span>
-                <h3 style="margin-bottom:6px;">Exclusive Discount Combos</h3>
-                <p style="color:var(--text-muted); font-size:0.88rem;">We are preparing mega family deals and burger combos for you!</p>
-            </div>
+            <div id="combosContainer"></div>
 
-            <!-- Desserts & Beverages Section (Coming Soon) -->
+            <!-- SECTION 3: DESSERTS & COLD SHAKES -->
             <div class="section-title">
                 <span><i class="fa-solid fa-ice-cream" style="color:var(--primary);"></i> Desserts & Cold Shakes</span>
             </div>
-            <div class="coming-soon-box glass">
-                <span class="badge-cs">Coming Soon</span>
-                <h3 style="margin-bottom:6px;">Sweet Treats & Gourmet Shakes</h3>
-                <p style="color:var(--text-muted); font-size:0.88rem;">Chilled thick shakes, ice cream sundaes and lava cakes launching soon.</p>
-            </div>
+            <div id="dessertsContainer"></div>
         </div>
 
-        <!-- Footer -->
-        <footer class="glass">
+        <footer>
             <div class="footer-content">
                 <p>© Buy More Fast Food. All Rights Reserved.</p>
                 <p style="margin-top:4px; font-size:0.85rem;">Developed by <b>Muhammad Danish</b></p>
@@ -504,13 +461,12 @@
         </div>
     </div>
 
-    <!-- THEME SELECTOR MODAL -->
+    <!-- THEME MODAL -->
     <div class="modal-overlay" id="themeModal">
         <div class="modal-box glass">
             <div class="close-modal" onclick="closeThemeModal()"><i class="fa-solid fa-xmark"></i></div>
             <h3 style="margin-bottom:10px;"><i class="fa-solid fa-palette" style="color:var(--secondary);"></i> Select Premium Theme</h3>
             <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:15px;">Pick your favorite liquid glass neon vibe.</p>
-            
             <div class="theme-grid">
                 <div class="theme-card" onclick="setTheme('default')" style="border-color:#ff4757;">🔥 Cyber Red</div>
                 <div class="theme-card" onclick="setTheme('emerald')" style="border-color:#00b894;">🌿 Emerald Green</div>
@@ -533,7 +489,6 @@
                 <h2 style="font-size:1.6rem; font-weight:800;">Store Portal Login</h2>
                 <p style="font-size:0.85rem; color:var(--text-muted)">Login to manage orders and menu items</p>
             </div>
-
             <form onsubmit="handleLoginSubmit(event)">
                 <div class="input-field">
                     <label>Username</label>
@@ -593,38 +548,60 @@
 
     <script>
         let foodItems = [
-            { id: 1, name: "Zinger Burger", emoji: "🍔", imgSrc: null, price: 5.99, desc: "Crispy chicken patty with spicy mayo" },
-            { id: 2, name: "Cheesy Pizza", emoji: "🍕", imgSrc: null, price: 9.99, desc: "Loaded with extra mozzarella cheese" },
-            { id: 3, name: "French Fries", emoji: "🍟", imgSrc: null, price: 2.99, desc: "Golden salted crispy potato fries" },
-            { id: 4, name: "Cold Drink", emoji: "🥤", imgSrc: null, price: 1.99, desc: "Chilled refreshing drink" }
+            { id: 1, category: "main", name: "Zinger Burger", emoji: "🍔", imgSrc: null, price: 5.99, desc: "Crispy chicken patty with spicy mayo" },
+            { id: 2, category: "main", name: "Cheesy Pizza", emoji: "🍕", imgSrc: null, price: 9.99, desc: "Loaded with extra mozzarella cheese" },
+            { id: 3, category: "main", name: "French Fries", emoji: "🍟", imgSrc: null, price: 2.99, desc: "Golden salted crispy potato fries" },
+            { id: 4, category: "main", name: "Cold Drink", emoji: "🥤", imgSrc: null, price: 1.99, desc: "Chilled refreshing drink" }
         ];
 
         let cart = [];
         let placedOrders = [];
         let isAdminLoggedIn = false;
 
-        function renderMenu() {
-            const grid = document.getElementById('menuGrid');
-            grid.innerHTML = foodItems.map(item => `
-                <div class="food-card glass">
-                    <div class="food-img-container">
-                        ${item.imgSrc ? `<img src="${item.imgSrc}" alt="${item.name}">` : item.emoji}
+        function renderAllSections() {
+            renderSection('main', 'mainMenuGrid');
+            renderSection('combos', 'combosContainer');
+            renderSection('desserts', 'dessertsContainer');
+        }
+
+        function renderSection(catKey, containerId) {
+            const container = document.getElementById(containerId);
+            const filteredItems = foodItems.filter(i => i.category === catKey);
+
+            if (filteredItems.length === 0) {
+                // Show Dynamic Coming Soon Card if empty
+                container.className = "";
+                container.innerHTML = `
+                    <div class="coming-soon-box glass">
+                        <span class="badge-cs">Coming Soon</span>
+                        <h3 style="margin-bottom:6px; font-weight:700;">Delicious Items Launching Soon</h3>
+                        <p style="color:var(--text-muted); font-size:0.88rem;">We are preparing fresh items for this section!</p>
                     </div>
-                    <div class="food-info">
-                        <h3>${item.name}</h3>
-                        <p>${item.desc}</p>
+                `;
+            } else {
+                // Render Grid of Items
+                container.className = "menu-grid";
+                container.innerHTML = filteredItems.map(item => `
+                    <div class="food-card glass">
+                        <div class="food-img-container">
+                            ${item.imgSrc ? `<img src="${item.imgSrc}" alt="${item.name}">` : item.emoji}
+                        </div>
+                        <div class="food-info">
+                            <h3>${item.name}</h3>
+                            <p>${item.desc}</p>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="food-price">$${parseFloat(item.price).toFixed(2)}</span>
+                            ${isAdminLoggedIn ? `
+                                <button onclick="deleteFoodItem(${item.id})" style="background:#ff4757; color:#fff; border:none; padding:7px 10px; border-radius:8px; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
+                                <button onclick="editFoodPrice(${item.id})" style="background:var(--secondary); color:#000; border:none; padding:7px 10px; border-radius:8px; cursor:pointer; font-weight:bold;"><i class="fa-solid fa-pen"></i></button>
+                            ` : `
+                                <button class="btn-add" onclick="addToCart(${item.id})">+ Add</button>
+                            `}
+                        </div>
                     </div>
-                    <div class="card-bottom">
-                        <span class="food-price">$${parseFloat(item.price).toFixed(2)}</span>
-                        ${isAdminLoggedIn ? `
-                            <button onclick="deleteFoodItem(${item.id})" style="background:#ff4757; color:#fff; border:none; padding:7px 10px; border-radius:8px; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
-                            <button onclick="editFoodPrice(${item.id})" style="background:var(--secondary); color:#000; border:none; padding:7px 10px; border-radius:8px; cursor:pointer; font-weight:bold;"><i class="fa-solid fa-pen"></i></button>
-                        ` : `
-                            <button class="btn-add" onclick="addToCart(${item.id})">+ Add</button>
-                        `}
-                    </div>
-                </div>
-            `).join('');
+                `).join('');
+            }
         }
 
         // Left Drawer
@@ -703,7 +680,7 @@
                 isAdminLoggedIn = false;
                 document.getElementById('adminPanel').style.display = 'none';
                 document.getElementById('drawerAdminText').innerText = 'Admin Portal';
-                renderMenu();
+                renderAllSections();
                 return;
             }
             document.getElementById('loginModal').style.display = 'flex';
@@ -718,7 +695,7 @@
                 document.getElementById('adminPanel').style.display = 'block';
                 document.getElementById('drawerAdminText').innerText = 'Logout Admin';
                 closeLoginModal();
-                renderMenu();
+                renderAllSections();
                 alert('Admin Logged In Successfully!');
             } else {
                 alert('Invalid Username or Password!');
@@ -735,7 +712,7 @@
         function renderOrdersTable() {
             const tbody = document.getElementById('ordersTableBody');
             if(placedOrders.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No orders placed yet.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--text-muted); padding:20px;">No orders placed yet.</td></tr>`;
                 return;
             }
             tbody.innerHTML = placedOrders.map(o => `
@@ -751,6 +728,7 @@
         }
 
         function addNewFoodItem() {
+            const category = document.getElementById('newItemCategory').value;
             const name = document.getElementById('newItemName').value;
             const emoji = document.getElementById('newItemEmoji').value || '🍕';
             const price = parseFloat(document.getElementById('newItemPrice').value);
@@ -762,14 +740,14 @@
             if(fileInput.files && fileInput.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    foodItems.push({ id: Date.now(), name, emoji, imgSrc: e.target.result, price, desc });
-                    renderMenu();
+                    foodItems.push({ id: Date.now(), category, name, emoji, imgSrc: e.target.result, price, desc });
+                    renderAllSections();
                     resetAdminForm();
                 };
                 reader.readAsDataURL(fileInput.files[0]);
             } else {
-                foodItems.push({ id: Date.now(), name, emoji, imgSrc: null, price, desc });
-                renderMenu();
+                foodItems.push({ id: Date.now(), category, name, emoji, imgSrc: null, price, desc });
+                renderAllSections();
                 resetAdminForm();
             }
         }
@@ -780,12 +758,12 @@
             document.getElementById('newItemPrice').value = '';
             document.getElementById('newItemDesc').value = '';
             document.getElementById('newItemFile').value = '';
-            alert('New Item Added to Menu!');
+            alert('New Item Added Successfully!');
         }
 
         function deleteFoodItem(id) {
             foodItems = foodItems.filter(i => i.id !== id);
-            renderMenu();
+            renderAllSections();
         }
 
         function editFoodPrice(id) {
@@ -793,11 +771,11 @@
             const newPrice = prompt(`Enter new price for ${item.name}:`, item.price);
             if(newPrice && !isNaN(newPrice)) {
                 item.price = parseFloat(newPrice);
-                renderMenu();
+                renderAllSections();
             }
         }
 
-        renderMenu();
+        renderAllSections();
         updateCartUI();
     </script>
 </body>
