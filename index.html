@@ -4,98 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy More - Fast Food</title>
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        :root {
-            --primary: #ff4757;
-            --secondary: #ffa502;
-            --dark-bg: #0f172a;
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: #090d16;
+            background: linear-gradient(135deg, #0f172a, #1e293b, #0f0914);
             color: #ffffff;
             min-height: 100vh;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Ambient Animated Background Blobs */
-        .blob-container {
+        /* Ambient Glowing Background Shapes */
+        .bg-glow {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.6;
-            animation: float 10s infinite alternate ease-in-out;
-        }
-
-        .blob-1 {
             width: 350px;
             height: 350px;
-            background: #ff4757;
+            background: rgba(255, 71, 87, 0.4);
+            border-radius: 50%;
+            filter: blur(90px);
             top: -50px;
             left: -50px;
+            z-index: -1;
+            animation: pulse 8s infinite alternate;
         }
 
-        .blob-2 {
+        .bg-glow-2 {
+            position: fixed;
             width: 400px;
             height: 400px;
-            background: #ffa502;
-            bottom: -100px;
-            right: -100px;
-            animation-delay: -5s;
+            background: rgba(255, 165, 2, 0.3);
+            border-radius: 50%;
+            filter: blur(90px);
+            bottom: -50px;
+            right: -50px;
+            z-index: -1;
+            animation: pulse 10s infinite alternate-reverse;
         }
 
-        .blob-3 {
-            width: 300px;
-            height: 300px;
-            background: #2ed573;
-            top: 40%;
-            left: 40%;
-            animation-delay: -2s;
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.4; }
+            100% { transform: scale(1.2); opacity: 0.7; }
         }
 
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, 50px) scale(1.1); }
-        }
-
-        /* Liquid Glass Card Container */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
+        /* Liquid Glass Effect Card */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             border-radius: 24px;
         }
 
         /* ------------------ LOGIN SCREEN ------------------ */
-        .login-wrapper {
+        .login-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -104,24 +74,443 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 100;
+            z-index: 1000;
             padding: 20px;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            transition: opacity 0.5s ease;
         }
 
         .login-box {
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             padding: 40px 30px;
             text-align: center;
-            position: relative;
         }
 
-        .brand-header {
+        .login-logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .login-box h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff4757, #ffa502);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .login-box p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
             margin-bottom: 25px;
         }
 
-        .brand-header i {
-            font-size: 3rem;
-            color: var(--secondary);
-            margin-bottom: 10
+        .input-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 6px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: #fff;
+            outline: none;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #ffa502;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(255, 165, 2, 0.3);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(45deg, #ff4757, #ffa502);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
+        }
+
+        .credentials-hint {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ------------------ MAIN APP DASHBOARD ------------------ */
+        .main-app {
+            display: none;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            margin-bottom: 30px;
+        }
+
+        .app-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffa502;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .cart-count {
+            background: #ff4757;
+            padding: 2px 8px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+
+        /* Hero Banner */
+        .hero {
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 35px;
+            background: linear-gradient(135deg, rgba(255,71,87,0.1), rgba(255,165,2,0.1));
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .hero span {
+            color: #ffa502;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Menu Grid */
+        .menu-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .food-card {
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .food-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .food-emoji {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .food-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .food-card p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 15px;
+        }
+
+        .food-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #ffa502;
+        }
+
+        .add-to-cart-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #ff2e43;
+        }
+
+        /* Cart Section Sidebar / Box */
+        .cart-section {
+            margin-top: 20px;
+            padding: 25px;
+        }
+
+        .cart-items-list {
+            margin: 15px 0;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .cart-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            background: #2ed573;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.2s;
+        }
+
+        .checkout-btn:hover {
+            background: #26af5f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- LOGIN SCREEN -->
+    <div class="login-container" id="loginContainer">
+        <div class="glass-panel login-box">
+            <div class="login-logo">🍔</div>
+            <h1>BUY MORE</h1>
+            <p>Fast Food Store Management</p>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="username" placeholder="Enter username" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Enter password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Login to Dashboard</button>
+            </form>
+
+            <div class="credentials-hint">
+                🔑 Username: <b>admin</b> | Password: <b>buymore123</b>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP DASHBOARD -->
+    <div class="main-app" id="mainApp">
+        <header class="glass-panel">
+            <div class="app-logo">
+                <span>🍔</span> BUY MORE FAST FOOD
+            </div>
+            <button class="cart-btn" onclick="scrollToCart()">
+                🛒 Cart <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </header>
+
+        <section class="hero glass-panel">
+            <h2>Fresh, Crispy & <span>Delicious</span> Fast Food</h2>
+            <p>Order your favorite burgers, pizzas, and drinks instantly!</p>
+        </section>
+
+        <div class="menu-title">Our Special Menu</div>
+        <div class="menu-grid" id="menuGrid">
+            <!-- Populated via JavaScript -->
+        </div>
+
+        <div class="cart-section glass-panel" id="cartSection">
+            <h3>🛒 Your Order Cart</h3>
+            <div class="cart-items-list" id="cartItemsList">
+                <p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px;">Your cart is empty.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; margin-top: 15px;">
+                <span>Total Amount:</span>
+                <span id="cartTotal" style="color: #ffa502;">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="checkoutOrder()">Confirm & Place Order</button>
+        </div>
+    </div>
+
+    <script>
+        const menuItems = [
+            { id: 1, name: "Zinger Burger", emoji: "🍔", price: 5.99, desc: "Crispy chicken patty with spicy mayo" },
+            { id: 2, name: "Cheesy Pizza", emoji: "🍕", price: 9.99, desc: "Loaded with extra mozzarella cheese" },
+            { id: 3, name: "French Fries", emoji: "🍟", price: 2.99, desc: "Golden crispy salted potato fries" },
+            { id: 4, name: "Cold Drink", emoji: "🥤", price: 1.99, desc: "Refreshing chilled beverage" },
+            { id: 5, name: "Hot Dog", emoji: "🌭", price: 4.49, desc: "Grilled sausage with mustard & ketchup" },
+            { id: 6, name: "Ice Cream Sundae", emoji: "🍨", price: 3.49, desc: "Sweet chocolate and vanilla treat" }
+        ];
+
+        let cart = [];
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value.trim();
+            const pass = document.getElementById('password').value.trim();
+
+            if (user === 'admin' && pass === 'buymore123') {
+                const loginContainer = document.getElementById('loginContainer');
+                const mainApp = document.getElementById('mainApp');
+
+                loginContainer.style.opacity = '0';
+                setTimeout(() => {
+                    loginContainer.style.display = 'none';
+                    mainApp.style.display = 'block';
+                    setTimeout(() => mainApp.style.opacity = '1', 50);
+                    renderMenu();
+                }, 500);
+            } else {
+                alert('Galat username ya password! (Use: admin / buymore123)');
+            }
+        }
+
+        function renderMenu() {
+            const grid = document.getElementById('menuGrid');
+            grid.innerHTML = menuItems.map(item => `
+                <div class="glass-panel food-card">
+                    <div class="food-emoji">${item.emoji}</div>
+                    <h3>${item.name}</h3>
+                    <p>${item.desc}</p>
+                    <div class="food-footer">
+                        <span class="price">$${item.price.toFixed(2)}</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(${item.id})">+ Add</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(id) {
+            const item = menuItems.find(i => i.id === id);
+            cart.push(item);
+            updateCartUI();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').innerText = cart.length;
+            const list = document.getElementById('cartItemsList');
+
+            if (cart.length === 0) {
+                list.innerHTML = `<p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px;">Your cart is empty.</p>`;
+                document.getElementById('cartTotal').innerText = '$0.00';
+                return;
+            }
+
+            let total = 0;
+            list.innerHTML = cart.map((item, index) => {
+                total += item.price;
+                return `
+                    <div class="cart-item-row">
+                        <div>
+                            <span>${item.emoji} ${item.name}</span>
+                            <div style="font-size: 0.8rem; color: #ffa502;">$${item.price.toFixed(2)}</div>
+                        </div>
+                        <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#ff4757; cursor:pointer; font-weight:bold;">❌ Remove</button>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('cartTotal').innerText = `$${total.toFixed(2)}`;
+        }
+
+        function scrollToCart() {
+            document.getElementById('cartSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function checkoutOrder() {
+            if (cart.length === 0) {
+                alert("Aap ka cart khali hai!");
+                return;
+            }
+            alert("Order Successfully Place Ho Gaya Hai! Shukriya Buy More se order karne ke liye.");
+            cart = [];
+            updateCartUI();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
