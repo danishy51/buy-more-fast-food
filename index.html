@@ -3,144 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy More - Fast Food</title>
+    <title>Buy More - Premium Fast Food</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary: #ff4757;
+            --primary-hover: #ff2e43;
+            --secondary: #ffa502;
+            --bg-dark: #0a0e17;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border-glass: rgba(255, 255, 255, 0.12);
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.65);
         }
 
         body {
-            background: linear-gradient(135deg, #0f172a, #1e293b, #0f0914);
-            color: #ffffff;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             min-height: 100vh;
-            overflow-x: hidden;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Ambient Glowing Background Shapes */
-        .bg-glow {
+        /* HD Animated Ambient Glows */
+        .ambient-glow {
             position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .glow-1 {
             width: 350px;
             height: 350px;
-            background: rgba(255, 71, 87, 0.4);
-            border-radius: 50%;
-            filter: blur(90px);
-            top: -50px;
-            left: -50px;
-            z-index: -1;
-            animation: pulse 8s infinite alternate;
+            background: rgba(255, 71, 87, 0.25);
+            top: -100px;
+            left: -100px;
         }
-
-        .bg-glow-2 {
-            position: fixed;
+        .glow-2 {
             width: 400px;
             height: 400px;
-            background: rgba(255, 165, 2, 0.3);
-            border-radius: 50%;
-            filter: blur(90px);
-            bottom: -50px;
-            right: -50px;
-            z-index: -1;
-            animation: pulse 10s infinite alternate-reverse;
+            background: rgba(255, 165, 2, 0.2);
+            bottom: -150px;
+            right: -100px;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.4; }
-            100% { transform: scale(1.2); opacity: 0.7; }
-        }
-
-        /* Liquid Glass Effect Card */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.07);
+        /* Ultra Liquid Glassmorphism Base */
+        .glass {
+            background: rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            border-radius: 24px;
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
-        /* ------------------ LOGIN SCREEN ------------------ */
-        .login-container {
+        /* Header Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-header {
+            padding: 9px 18px;
+            border-radius: 14px;
+            border: 1px solid var(--border-glass);
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-header:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .btn-login-trigger {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+        }
+
+        .cart-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 2px 7px;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* Container & Layout */
+        .main-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 20px 80px 20px;
+            flex: 1;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            border-radius: 24px;
+            padding: 35px 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.12), rgba(255, 165, 2, 0.12));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .hero-banner h1 span {
+            color: var(--secondary);
+        }
+        .hero-banner p {
+            color: var(--text-muted);
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Menu Grid */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .food-card {
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .food-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .food-img-container {
+            height: 130px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+        }
+
+        .food-info h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .food-info p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .food-price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--secondary);
+        }
+
+        .btn-add {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 9px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-add:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Overlay Modals */
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            display: flex;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
             padding: 20px;
-            transition: opacity 0.5s ease;
         }
 
-        .login-box {
+        .modal-box {
             width: 100%;
-            max-width: 400px;
-            padding: 40px 30px;
-            text-align: center;
+            max-width: 440px;
+            border-radius: 28px;
+            padding: 35px 28px;
+            position: relative;
+            animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .login-logo {
-            font-size: 3rem;
-            margin-bottom: 10px;
+        @keyframes modalPop {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
-        .login-box h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, #ff4757, #ffa502);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.05);
         }
 
-        .login-box p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-        }
-
-        .input-group {
-            margin-bottom: 18px;
+        /* Input Controls */
+        .input-field {
+            margin-bottom: 16px;
             text-align: left;
         }
-
-        .input-group label {
+        .input-field label {
             display: block;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
             margin-bottom: 6px;
         }
-
-        .input-group input {
+        .input-field input, .input-field textarea {
             width: 100%;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-glass);
             border-radius: 12px;
             color: #fff;
             outline: none;
-            font-size: 1rem;
-            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .input-field input:focus, .input-field textarea:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(255, 165, 2, 0.2);
         }
 
-        .input-group input:focus {
-            border-color: #ffa502;
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 15px rgba(255, 165, 2, 0.3);
-        }
-
-        .login-btn {
+        .btn-submit {
             width: 100%;
-            padding: 14px;
-            background: linear-gradient(45deg, #ff4757, #ffa502);
+            padding: 13px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             border: none;
             border-radius: 12px;
             color: #fff;
@@ -148,319 +336,309 @@
             font-weight: 700;
             cursor: pointer;
             margin-top: 10px;
-            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
-        }
-
-        .credentials-hint {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 10px;
-            border-radius: 8px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* ------------------ MAIN APP DASHBOARD ------------------ */
-        .main-app {
-            display: none;
+        /* Cart & Checkout Drawer */
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -420px;
             width: 100%;
-            max-width: 1200px;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 25px;
-            margin-bottom: 30px;
-        }
-
-        .app-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #ffa502;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .cart-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
-            border-radius: 30px;
-            color: white;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
-        }
-
-        .cart-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .cart-count {
-            background: #ff4757;
-            padding: 2px 8px;
-            border-radius: 50%;
-            font-size: 0.8rem;
-        }
-
-        /* Hero Banner */
-        .hero {
-            padding: 40px;
-            text-align: center;
-            margin-bottom: 35px;
-            background: linear-gradient(135deg, rgba(255,71,87,0.1), rgba(255,165,2,0.1));
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .hero span {
-            color: #ffa502;
-        }
-
-        .hero p {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Menu Grid */
-        .menu-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .food-card {
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .food-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .food-emoji {
-            font-size: 4rem;
-            margin-bottom: 15px;
-        }
-
-        .food-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .food-card p {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 15px;
-        }
-
-        .food-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .price {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #ffa502;
-        }
-
-        .add-to-cart-btn {
-            background: #ff4757;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-
-        .add-to-cart-btn:hover {
-            background: #ff2e43;
-        }
-
-        /* Cart Section Sidebar / Box */
-        .cart-section {
-            margin-top: 20px;
+            max-width: 400px;
+            height: 100vh;
+            z-index: 999;
             padding: 25px;
+            transition: right 0.4s ease;
+            display: flex;
+            flex-direction: column;
         }
-
-        .cart-items-list {
-            margin: 15px 0;
-            max-height: 250px;
+        .drawer.active {
+            right: 0;
+        }
+        .cart-items-container {
+            flex: 1;
             overflow-y: auto;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
-
         .cart-item-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .checkout-btn {
-            width: 100%;
+            background: rgba(255, 255, 255, 0.04);
             padding: 12px;
-            background: #2ed573;
-            border: none;
             border-radius: 12px;
-            color: white;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: 0.2s;
         }
 
-        .checkout-btn:hover {
-            background: #26af5f;
+        /* Admin Controls Interface */
+        .admin-dashboard {
+            display: none;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 165, 2, 0.4);
+        }
+
+        .admin-tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .admin-tab-btn {
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border-glass);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .admin-tab-btn.active {
+            background: var(--secondary);
+            color: #000;
+        }
+
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        .orders-table th, .orders-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        /* Responsiveness Touch-ups */
+        @media (max-width: 480px) {
+            header {
+                padding: 12px 4%;
+            }
+            .brand-logo {
+                font-size: 1.25rem;
+            }
+            .btn-header {
+                padding: 7px 12px;
+                font-size: 0.8rem;
+            }
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 12px;
+            }
+            .food-card {
+                padding: 14px;
+            }
+            .food-img-container {
+                height: 100px;
+                font-size: 3.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow"></div>
-    <div class="bg-glow-2"></div>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
 
-    <!-- LOGIN SCREEN -->
-    <div class="login-container" id="loginContainer">
-        <div class="glass-panel login-box">
-            <div class="login-logo">🍔</div>
-            <h1>BUY MORE</h1>
-            <p>Fast Food Store Management</p>
+    <!-- Header Navigation -->
+    <header class="glass">
+        <div class="brand-logo" onclick="location.reload()">
+            <i class="fa-solid fa-burger"></i> BUY MORE
+        </div>
+        <div class="header-actions">
+            <button class="btn-header" onclick="toggleCartDrawer()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cartCount">0</span>
+            </button>
+            <button class="btn-header btn-login-trigger" id="authBtn" onclick="openLoginModal()">
+                <i class="fa-solid fa-user"></i> <span id="authBtnText">Login</span>
+            </button>
+        </div>
+    </header>
 
-            <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="input-group">
+    <div class="main-container">
+        
+        <!-- Admin Dashboard Section (Visible only when logged in as Admin) -->
+        <div class="admin-dashboard glass" id="adminPanel">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h3 style="color:var(--secondary);"><i class="fa-solid fa-user-gear"></i> Admin Control Panel</h3>
+                <span style="font-size:0.8rem; color:var(--text-muted)">Logged in as <b>Admin</b></span>
+            </div>
+            
+            <div class="admin-tab-buttons">
+                <button class="admin-tab-btn active" id="tabOrdersBtn" onclick="switchAdminTab('orders')">Live Orders</button>
+                <button class="admin-tab-btn" id="tabItemsBtn" onclick="switchAdminTab('items')">Manage Food Items</button>
+            </div>
+
+            <!-- Orders Tab -->
+            <div id="adminOrdersSection">
+                <div style="overflow-x:auto;">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No orders placed yet.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Add/Edit Items Tab -->
+            <div id="adminItemsSection" style="display:none;">
+                <h4 style="margin-bottom:12px;">Add New Item</h4>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-bottom:15px;">
+                    <input type="text" id="newItemName" placeholder="Item Name" class="input-field" style="margin:0;">
+                    <input type="text" id="newItemEmoji" placeholder="Emoji (e.g. 🌮)" class="input-field" style="margin:0;">
+                    <input type="number" id="newItemPrice" placeholder="Price ($)" class="input-field" style="margin:0;">
+                    <input type="text" id="newItemDesc" placeholder="Description" class="input-field" style="margin:0;">
+                </div>
+                <button class="btn-add" onclick="addNewFoodItem()" style="margin-bottom:20px;">+ Add to Menu</button>
+            </div>
+        </div>
+
+        <!-- Main Customer Hero Banner -->
+        <div class="hero-banner glass">
+            <h1>Crave It? <span>Buy More!</span></h1>
+            <p>Hot, fresh, and delicious fast food delivered straight to your doorstep.</p>
+        </div>
+
+        <!-- Food Menu Section -->
+        <div class="section-title">
+            <span><i class="fa-solid fa-fire" style="color:var(--primary);"></i> Explore Menu</span>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+            <!-- Items rendered dynamically via JS -->
+        </div>
+    </div>
+
+    <!-- LIQUID GLASS LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-box glass">
+            <div class="close-modal" onclick="closeLoginModal()"><i class="fa-solid fa-xmark"></i></div>
+            <div style="text-align:center; margin-bottom:25px;">
+                <div style="font-size:2.5rem; color:var(--secondary);"><i class="fa-solid fa-lock"></i></div>
+                <h2 style="font-size:1.6rem; font-weight:800;">Store Portal Login</h2>
+                <p style="font-size:0.85rem; color:var(--text-muted)">Login to manage orders and menu items</p>
+            </div>
+
+            <form onsubmit="handleLoginSubmit(event)">
+                <div class="input-field">
                     <label>Username</label>
-                    <input type="text" id="username" placeholder="Enter username" required>
+                    <input type="text" id="loginUser" placeholder="admin" required>
                 </div>
-
-                <div class="input-group">
+                <div class="input-field">
                     <label>Password</label>
-                    <input type="password" id="password" placeholder="Enter password" required>
+                    <input type="password" id="loginPass" placeholder="buymore123" required>
                 </div>
-
-                <button type="submit" class="login-btn">Login to Dashboard</button>
+                <button type="submit" class="btn-submit">Login</button>
             </form>
-
-            <div class="credentials-hint">
-                🔑 Username: <b>admin</b> | Password: <b>buymore123</b>
+            <div style="margin-top:15px; text-align:center; font-size:0.78rem; color:var(--text-muted); background:rgba(0,0,0,0.2); padding:8px; border-radius:8px;">
+                Use: Username <b>admin</b> | Password <b>buymore123</b>
             </div>
         </div>
     </div>
 
-    <!-- MAIN APP DASHBOARD -->
-    <div class="main-app" id="mainApp">
-        <header class="glass-panel">
-            <div class="app-logo">
-                <span>🍔</span> BUY MORE FAST FOOD
-            </div>
-            <button class="cart-btn" onclick="scrollToCart()">
-                🛒 Cart <span class="cart-count" id="cartCount">0</span>
-            </button>
-        </header>
-
-        <section class="hero glass-panel">
-            <h2>Fresh, Crispy & <span>Delicious</span> Fast Food</h2>
-            <p>Order your favorite burgers, pizzas, and drinks instantly!</p>
-        </section>
-
-        <div class="menu-title">Our Special Menu</div>
-        <div class="menu-grid" id="menuGrid">
-            <!-- Populated via JavaScript -->
+    <!-- CART SIDEBAR DRAWER -->
+    <div class="drawer glass" id="cartDrawer">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-glass); padding-bottom:15px;">
+            <h3><i class="fa-solid fa-bag-shopping"></i> Your Cart</h3>
+            <div class="close-modal" style="position:static;" onclick="toggleCartDrawer()"><i class="fa-solid fa-xmark"></i></div>
         </div>
 
-        <div class="cart-section glass-panel" id="cartSection">
-            <h3>🛒 Your Order Cart</h3>
-            <div class="cart-items-list" id="cartItemsList">
-                <p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px;">Your cart is empty.</p>
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; margin-top: 15px;">
+        <div class="cart-items-container" id="cartItemsList">
+            <!-- Items added dynamically -->
+        </div>
+
+        <div style="border-top:1px solid var(--border-glass); padding-top:15px;">
+            <div style="display:flex; justify-content:space-between; font-size:1.1rem; font-weight:700; margin-bottom:15px;">
                 <span>Total Amount:</span>
-                <span id="cartTotal" style="color: #ffa502;">$0.00</span>
+                <span id="cartTotal" style="color:var(--secondary);">$0.00</span>
             </div>
-            <button class="checkout-btn" onclick="checkoutOrder()">Confirm & Place Order</button>
+            <button class="btn-submit" onclick="openCheckoutModal()">Proceed to Order</button>
+        </div>
+    </div>
+
+    <!-- CUSTOMER DETAILS CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-box glass">
+            <div class="close-modal" onclick="closeCheckoutModal()"><i class="fa-solid fa-xmark"></i></div>
+            <h3 style="margin-bottom:15px;"><i class="fa-solid fa-truck-fast"></i> Delivery Details</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:20px;">Please enter your details to complete the order.</p>
+
+            <form onsubmit="handleCheckoutSubmit(event)">
+                <div class="input-field">
+                    <label>Full Name</label>
+                    <input type="text" id="custName" placeholder="e.g. Danish Khan" required>
+                </div>
+                <div class="input-field">
+                    <label>Phone Number</label>
+                    <input type="tel" id="custPhone" placeholder="e.g. 03001234567" required>
+                </div>
+                <div class="input-field">
+                    <label>Delivery Address</label>
+                    <textarea id="custAddress" rows="3" placeholder="Enter complete address" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit" style="background:#2ed573;">Confirm & Place Order</button>
+            </form>
         </div>
     </div>
 
     <script>
-        const menuItems = [
+        // State Store
+        let foodItems = [
             { id: 1, name: "Zinger Burger", emoji: "🍔", price: 5.99, desc: "Crispy chicken patty with spicy mayo" },
             { id: 2, name: "Cheesy Pizza", emoji: "🍕", price: 9.99, desc: "Loaded with extra mozzarella cheese" },
-            { id: 3, name: "French Fries", emoji: "🍟", price: 2.99, desc: "Golden crispy salted potato fries" },
-            { id: 4, name: "Cold Drink", emoji: "🥤", price: 1.99, desc: "Refreshing chilled beverage" },
-            { id: 5, name: "Hot Dog", emoji: "🌭", price: 4.49, desc: "Grilled sausage with mustard & ketchup" },
-            { id: 6, name: "Ice Cream Sundae", emoji: "🍨", price: 3.49, desc: "Sweet chocolate and vanilla treat" }
+            { id: 3, name: "French Fries", emoji: "🍟", price: 2.99, desc: "Golden salted crispy potato fries" },
+            { id: 4, name: "Cold Drink", emoji: "🥤", price: 1.99, desc: "Chilled refreshing drink" }
         ];
 
         let cart = [];
+        let placedOrders = [];
+        let isAdminLoggedIn = false;
 
-        function handleLogin(e) {
-            e.preventDefault();
-            const user = document.getElementById('username').value.trim();
-            const pass = document.getElementById('password').value.trim();
-
-            if (user === 'admin' && pass === 'buymore123') {
-                const loginContainer = document.getElementById('loginContainer');
-                const mainApp = document.getElementById('mainApp');
-
-                loginContainer.style.opacity = '0';
-                setTimeout(() => {
-                    loginContainer.style.display = 'none';
-                    mainApp.style.display = 'block';
-                    setTimeout(() => mainApp.style.opacity = '1', 50);
-                    renderMenu();
-                }, 500);
-            } else {
-                alert('Galat username ya password! (Use: admin / buymore123)');
-            }
-        }
-
+        // Render Menu Cards
         function renderMenu() {
             const grid = document.getElementById('menuGrid');
-            grid.innerHTML = menuItems.map(item => `
-                <div class="glass-panel food-card">
-                    <div class="food-emoji">${item.emoji}</div>
-                    <h3>${item.name}</h3>
-                    <p>${item.desc}</p>
-                    <div class="food-footer">
-                        <span class="price">$${item.price.toFixed(2)}</span>
-                        <button class="add-to-cart-btn" onclick="addToCart(${item.id})">+ Add</button>
+            grid.innerHTML = foodItems.map(item => `
+                <div class="food-card glass">
+                    <div class="food-img-container">${item.emoji}</div>
+                    <div class="food-info">
+                        <h3>${item.name}</h3>
+                        <p>${item.desc}</p>
+                    </div>
+                    <div class="card-bottom">
+                        <span class="food-price">$${parseFloat(item.price).toFixed(2)}</span>
+                        ${isAdminLoggedIn ? `
+                            <button onclick="deleteFoodItem(${item.id})" style="background:#ff4757; color:#fff; border:none; padding:7px 10px; border-radius:8px; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
+                            <button onclick="editFoodPrice(${item.id})" style="background:var(--secondary); color:#000; border:none; padding:7px 10px; border-radius:8px; cursor:pointer; font-weight:bold;"><i class="fa-solid fa-pen"></i></button>
+                        ` : `
+                            <button class="btn-add" onclick="addToCart(${item.id})">+ Add</button>
+                        `}
                     </div>
                 </div>
             `).join('');
         }
 
+        // Cart Drawer Control
+        function toggleCartDrawer() {
+            document.getElementById('cartDrawer').classList.toggle('active');
+        }
+
         function addToCart(id) {
-            const item = menuItems.find(i => i.id === id);
+            const item = foodItems.find(i => i.id === id);
             cart.push(item);
             updateCartUI();
         }
@@ -472,24 +650,24 @@
 
         function updateCartUI() {
             document.getElementById('cartCount').innerText = cart.length;
-            const list = document.getElementById('cartItemsList');
+            const container = document.getElementById('cartItemsList');
 
-            if (cart.length === 0) {
-                list.innerHTML = `<p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px;">Your cart is empty.</p>`;
+            if(cart.length === 0) {
+                container.innerHTML = `<p style="color:var(--text-muted); text-align:center; margin-top:30px;">Cart is empty.</p>`;
                 document.getElementById('cartTotal').innerText = '$0.00';
                 return;
             }
 
             let total = 0;
-            list.innerHTML = cart.map((item, index) => {
-                total += item.price;
+            container.innerHTML = cart.map((item, index) => {
+                total += parseFloat(item.price);
                 return `
                     <div class="cart-item-row">
                         <div>
-                            <span>${item.emoji} ${item.name}</span>
-                            <div style="font-size: 0.8rem; color: #ffa502;">$${item.price.toFixed(2)}</div>
+                            <div style="font-weight:700;">${item.emoji} ${item.name}</div>
+                            <div style="font-size:0.8rem; color:var(--secondary);">$${parseFloat(item.price).toFixed(2)}</div>
                         </div>
-                        <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#ff4757; cursor:pointer; font-weight:bold;">❌ Remove</button>
+                        <i class="fa-solid fa-trash" style="color:var(--primary); cursor:pointer;" onclick="removeFromCart(${index})"></i>
                     </div>
                 `;
             }).join('');
@@ -497,20 +675,139 @@
             document.getElementById('cartTotal').innerText = `$${total.toFixed(2)}`;
         }
 
-        function scrollToCart() {
-            document.getElementById('cartSection').scrollIntoView({ behavior: 'smooth' });
+        // Checkout Process
+        function openCheckoutModal() {
+            if(cart.length === 0) return alert('Your cart is empty!');
+            toggleCartDrawer();
+            document.getElementById('checkoutModal').style.display = 'flex';
         }
 
-        function checkoutOrder() {
-            if (cart.length === 0) {
-                alert("Aap ka cart khali hai!");
-                return;
-            }
-            alert("Order Successfully Place Ho Gaya Hai! Shukriya Buy More se order karne ke liye.");
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const address = document.getElementById('custAddress').value;
+
+            const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+
+            const newOrder = {
+                id: '#' + Math.floor(1000 + Math.random() * 9000),
+                name,
+                phone,
+                address,
+                items: cart.map(i => i.name).join(', '),
+                total: '$' + total.toFixed(2)
+            };
+
+            placedOrders.push(newOrder);
+            renderOrdersTable();
+
+            alert('Order Placed Successfully! Thank you for ordering from Buy More.');
             cart = [];
             updateCartUI();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            closeCheckoutModal();
         }
+
+        // Login System
+        function openLoginModal() {
+            if(isAdminLoggedIn) {
+                // Logout
+                isAdminLoggedIn = false;
+                document.getElementById('adminPanel').style.display = 'none';
+                document.getElementById('authBtnText').innerText = 'Login';
+                renderMenu();
+                return;
+            }
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function handleLoginSubmit(e) {
+            e.preventDefault();
+            const u = document.getElementById('loginUser').value;
+            const p = document.getElementById('loginPass').value;
+
+            if(u === 'admin' && p === 'buymore123') {
+                isAdminLoggedIn = true;
+                document.getElementById('adminPanel').style.display = 'block';
+                document.getElementById('authBtnText').innerText = 'Logout';
+                closeLoginModal();
+                renderMenu();
+                alert('Admin Logged In Successfully!');
+            } else {
+                alert('Invalid Username or Password!');
+            }
+        }
+
+        // Admin Actions
+        function switchAdminTab(tab) {
+            document.getElementById('tabOrdersBtn').classList.toggle('active', tab === 'orders');
+            document.getElementById('tabItemsBtn').classList.toggle('active', tab === 'items');
+            document.getElementById('adminOrdersSection').style.display = tab === 'orders' ? 'block' : 'none';
+            document.getElementById('adminItemsSection').style.display = tab === 'items' ? 'block' : 'none';
+        }
+
+        function renderOrdersTable() {
+            const tbody = document.getElementById('ordersTableBody');
+            if(placedOrders.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No orders placed yet.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = placedOrders.map(o => `
+                <tr>
+                    <td><b>${o.id}</b></td>
+                    <td>${o.name}</td>
+                    <td>${o.phone}</td>
+                    <td>${o.address}</td>
+                    <td>${o.items}</td>
+                    <td style="color:var(--secondary); font-weight:700;">${o.total}</td>
+                </tr>
+            `).join('');
+        }
+
+        function addNewFoodItem() {
+            const name = document.getElementById('newItemName').value;
+            const emoji = document.getElementById('newItemEmoji').value || '🍕';
+            const price = parseFloat(document.getElementById('newItemPrice').value);
+            const desc = document.getElementById('newItemDesc').value;
+
+            if(!name || isNaN(price)) return alert('Please enter item name and valid price');
+
+            foodItems.push({ id: Date.now(), name, emoji, price, desc });
+            renderMenu();
+
+            document.getElementById('newItemName').value = '';
+            document.getElementById('newItemEmoji').value = '';
+            document.getElementById('newItemPrice').value = '';
+            document.getElementById('newItemDesc').value = '';
+            alert('New Item Added to Menu!');
+        }
+
+        function deleteFoodItem(id) {
+            foodItems = foodItems.filter(i => i.id !== id);
+            renderMenu();
+        }
+
+        function editFoodPrice(id) {
+            const item = foodItems.find(i => i.id === id);
+            const newPrice = prompt(`Enter new price for ${item.name}:`, item.price);
+            if(newPrice && !isNaN(newPrice)) {
+                item.price = parseFloat(newPrice);
+                renderMenu();
+            }
+        }
+
+        // Initial Initialization
+        renderMenu();
+        updateCartUI();
     </script>
 </body>
 </html>
