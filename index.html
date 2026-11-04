@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Theme Palettes */
         :root {
             --bg-dark: #0a0e17;
             --primary: #ff4757;
@@ -20,48 +19,13 @@
             --text-muted: rgba(255, 255, 255, 0.65);
         }
 
-        [data-theme="emerald"] {
-            --primary: #00b894;
-            --primary-hover: #019875;
-            --secondary: #00cec9;
-            --bg-dark: #051610;
-        }
-        [data-theme="royal"] {
-            --primary: #9b59b6;
-            --primary-hover: #8e44ad;
-            --secondary: #f1c40f;
-            --bg-dark: #12081f;
-        }
-        [data-theme="ocean"] {
-            --primary: #0984e3;
-            --primary-hover: #0765af;
-            --secondary: #74b9ff;
-            --bg-dark: #031424;
-        }
-        [data-theme="pink"] {
-            --primary: #e84393;
-            --primary-hover: #d6306c;
-            --secondary: #a29bfe;
-            --bg-dark: #180814;
-        }
-        [data-theme="sunset"] {
-            --primary: #e17055;
-            --primary-hover: #d35400;
-            --secondary: #ffeaa7;
-            --bg-dark: #1a0f03;
-        }
-        [data-theme="lime"] {
-            --primary: #10ac84;
-            --primary-hover: #0e8d6d;
-            --secondary: #1dd1a1;
-            --bg-dark: #041410;
-        }
-        [data-theme="cyan"] {
-            --primary: #00d2d3;
-            --primary-hover: #01a3a4;
-            --secondary: #54a0ff;
-            --bg-dark: #03181a;
-        }
+        [data-theme="emerald"] { --primary: #00b894; --primary-hover: #019875; --secondary: #00cec9; --bg-dark: #051610; }
+        [data-theme="royal"] { --primary: #9b59b6; --primary-hover: #8e44ad; --secondary: #f1c40f; --bg-dark: #12081f; }
+        [data-theme="ocean"] { --primary: #0984e3; --primary-hover: #0765af; --secondary: #74b9ff; --bg-dark: #031424; }
+        [data-theme="pink"] { --primary: #e84393; --primary-hover: #d6306c; --secondary: #a29bfe; --bg-dark: #180814; }
+        [data-theme="sunset"] { --primary: #e17055; --primary-hover: #d35400; --secondary: #ffeaa7; --bg-dark: #1a0f03; }
+        [data-theme="lime"] { --primary: #10ac84; --primary-hover: #0e8d6d; --secondary: #1dd1a1; --bg-dark: #041410; }
+        [data-theme="cyan"] { --primary: #00d2d3; --primary-hover: #01a3a4; --secondary: #54a0ff; --bg-dark: #03181a; }
 
         * {
             margin: 0;
@@ -82,18 +46,6 @@
             transition: background 0.4s ease;
         }
 
-        /* View Mode Frame Simulation */
-        body.mobile-view-frame .app-wrapper {
-            max-width: 410px;
-            margin: 20px auto;
-            border: 10px solid #222;
-            border-radius: 40px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
-            overflow: hidden;
-            background: var(--bg-dark);
-        }
-
-        /* Ambient Glows */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
@@ -105,7 +57,6 @@
         .glow-1 { width: 350px; height: 350px; background: rgba(255, 71, 87, 0.2); top: -100px; left: -100px; }
         .glow-2 { width: 400px; height: 400px; background: rgba(255, 165, 2, 0.15); bottom: -150px; right: -100px; }
 
-        /* Crystal Liquid Glass Base */
         .glass {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(25px);
@@ -133,7 +84,7 @@
             border-radius: 0 0 24px 24px;
         }
 
-        .header-left, .header-actions {
+        .header-left {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -182,7 +133,6 @@
             transition: all 0.3s ease;
         }
         .btn-header:hover { background: rgba(255, 255, 255, 0.18); transform: translateY(-2px); }
-        .btn-login-trigger { background: linear-gradient(45deg, var(--primary), var(--secondary)); border: none; }
 
         .cart-badge {
             background: var(--primary);
@@ -193,16 +143,15 @@
             font-weight: 700;
         }
 
-        /* Main Container */
+        /* Container & Layout */
         .main-container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 25px 20px 80px 20px;
+            padding: 25px 20px 40px 20px;
             flex: 1;
         }
 
-        /* Hero Banner */
         .hero-banner {
             border-radius: 28px;
             padding: 40px 25px;
@@ -216,9 +165,8 @@
         .hero-banner h1 span { color: var(--secondary); }
         .hero-banner p { color: var(--text-muted); font-size: clamp(0.9rem, 2vw, 1.1rem); max-width: 600px; margin: 0 auto; }
 
-        /* Menu Grid */
-        .section-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 20px; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .section-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
 
         .food-card {
             border-radius: 22px;
@@ -231,7 +179,7 @@
         .food-card:hover { transform: translateY(-6px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); }
 
         .food-img-container {
-            height: 130px;
+            height: 140px;
             width: 100%;
             display: flex;
             align-items: center;
@@ -239,6 +187,13 @@
             font-size: 4.5rem;
             margin-bottom: 15px;
             background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .food-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 16px;
         }
 
@@ -259,6 +214,28 @@
             transition: background 0.2s;
         }
         .btn-add:hover { background: var(--primary-hover); }
+
+        /* Coming Soon Placeholder Section */
+        .coming-soon-box {
+            border-radius: 22px;
+            padding: 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--border-glass);
+            margin-bottom: 40px;
+        }
+        .badge-cs {
+            background: var(--secondary);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
 
         /* Left Side Hamburger Drawer */
         .left-drawer {
@@ -366,6 +343,31 @@
         .theme-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
         .theme-card { padding: 12px; border-radius: 12px; border: 1px solid var(--border-glass); background: rgba(255,255,255,0.04); cursor: pointer; text-align: center; font-weight: 600; font-size: 0.9rem; transition: 0.2s; }
         .theme-card:hover { background: rgba(255,255,255,0.15); border-color: var(--secondary); }
+
+        /* Footer Style */
+        footer {
+            margin-top: auto;
+            padding: 25px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-glass);
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .footer-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+        .footer-content b {
+            color: #ffffff;
+        }
+        .footer-contact {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
     </style>
 </head>
 <body data-theme="default">
@@ -385,15 +387,9 @@
                 </div>
             </div>
             <div class="header-actions">
-                <button class="btn-header" onclick="openThemeModal()" title="Change Theme">
-                    <i class="fa-solid fa-palette" style="color: var(--secondary);"></i>
-                </button>
                 <button class="btn-header" onclick="toggleCartDrawer()">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="cart-badge" id="cartCount">0</span>
-                </button>
-                <button class="btn-header btn-login-trigger" id="authBtn" onclick="openLoginModal()">
-                    <i class="fa-solid fa-user"></i> <span id="authBtnText">Login</span>
                 </button>
             </div>
         </header>
@@ -432,13 +428,19 @@
                 </div>
 
                 <div id="adminItemsSection" style="display:none;">
-                    <h4 style="margin-bottom:12px;">Add New Item</h4>
+                    <h4 style="margin-bottom:12px;">Add New Food Item</h4>
                     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-bottom:15px;">
                         <input type="text" id="newItemName" placeholder="Item Name" class="input-field" style="margin:0;">
                         <input type="text" id="newItemEmoji" placeholder="Emoji (e.g. 🌮)" class="input-field" style="margin:0;">
                         <input type="number" id="newItemPrice" placeholder="Price ($)" class="input-field" style="margin:0;">
                         <input type="text" id="newItemDesc" placeholder="Description" class="input-field" style="margin:0;">
                     </div>
+                    
+                    <div class="input-field" style="margin-bottom:15px;">
+                        <label><i class="fa-solid fa-image"></i> Upload Item Picture (Gallery / Computer)</label>
+                        <input type="file" id="newItemFile" accept="image/*" style="padding:8px;">
+                    </div>
+
                     <button class="btn-add" onclick="addNewFoodItem()" style="margin-bottom:20px;">+ Add to Menu</button>
                 </div>
             </div>
@@ -451,11 +453,41 @@
 
             <!-- Menu Section -->
             <div class="section-title">
-                <span><i class="fa-solid fa-fire" style="color:var(--primary);"></i> Explore Menu</span>
+                <span><i class="fa-solid fa-fire" style="color:var(--primary);"></i> Main Food Menu</span>
+            </div>
+            <div class="menu-grid" id="menuGrid"></div>
+
+            <!-- Combos Section (Coming Soon) -->
+            <div class="section-title">
+                <span><i class="fa-solid fa-boxes-packing" style="color:var(--secondary);"></i> Family Combos & Deals</span>
+            </div>
+            <div class="coming-soon-box glass">
+                <span class="badge-cs">Coming Soon</span>
+                <h3 style="margin-bottom:6px;">Exclusive Discount Combos</h3>
+                <p style="color:var(--text-muted); font-size:0.88rem;">We are preparing mega family deals and burger combos for you!</p>
             </div>
 
-            <div class="menu-grid" id="menuGrid"></div>
+            <!-- Desserts & Beverages Section (Coming Soon) -->
+            <div class="section-title">
+                <span><i class="fa-solid fa-ice-cream" style="color:var(--primary);"></i> Desserts & Cold Shakes</span>
+            </div>
+            <div class="coming-soon-box glass">
+                <span class="badge-cs">Coming Soon</span>
+                <h3 style="margin-bottom:6px;">Sweet Treats & Gourmet Shakes</h3>
+                <p style="color:var(--text-muted); font-size:0.88rem;">Chilled thick shakes, ice cream sundaes and lava cakes launching soon.</p>
+            </div>
         </div>
+
+        <!-- Footer -->
+        <footer class="glass">
+            <div class="footer-content">
+                <p>© Buy More Fast Food. All Rights Reserved.</p>
+                <p style="margin-top:4px; font-size:0.85rem;">Developed by <b>Muhammad Danish</b></p>
+                <div style="margin-top:6px;">
+                    <span class="footer-contact"><i class="fa-solid fa-phone"></i> 03067488053</span>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <!-- LEFT SIDE HAMBURGER DRAWER -->
@@ -464,28 +496,11 @@
             <h3 style="background: linear-gradient(45deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Navigation</h3>
             <div class="close-modal" style="position:static;" onclick="toggleLeftDrawer()"><i class="fa-solid fa-xmark"></i></div>
         </div>
-        <div class="drawer-nav-item" onclick="toggleLeftDrawer(); openSettingsModal();">
-            <i class="fa-solid fa-gear" style="color:var(--secondary);"></i> Settings
-        </div>
         <div class="drawer-nav-item" onclick="toggleLeftDrawer(); openThemeModal();">
             <i class="fa-solid fa-palette" style="color:var(--primary);"></i> Choose Theme
         </div>
-        <div class="drawer-nav-item" onclick="toggleLeftDrawer(); openLoginModal();">
-            <i class="fa-solid fa-lock" style="color:#2ed573;"></i> Admin Portal
-        </div>
-    </div>
-
-    <!-- SETTINGS MODAL (Desktop / Mobile View Switcher) -->
-    <div class="modal-overlay" id="settingsModal">
-        <div class="modal-box glass">
-            <div class="close-modal" onclick="closeSettingsModal()"><i class="fa-solid fa-xmark"></i></div>
-            <h3 style="margin-bottom:15px;"><i class="fa-solid fa-gear" style="color:var(--secondary);"></i> App Settings</h3>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:20px;">Choose how you want to view the application layout.</p>
-            
-            <div style="display:flex; gap:12px;">
-                <button class="btn-submit" onclick="setViewMode('desktop')" style="background:rgba(255,255,255,0.1); border:1px solid var(--border-glass);">Desktop View</button>
-                <button class="btn-submit" onclick="setViewMode('mobile')" style="background:var(--primary);">Mobile View Frame</button>
-            </div>
+        <div class="drawer-nav-item" id="drawerAdminBtn" onclick="toggleLeftDrawer(); openLoginModal();">
+            <i class="fa-solid fa-lock" style="color:#2ed573;"></i> <span id="drawerAdminText">Admin Portal</span>
         </div>
     </div>
 
@@ -578,10 +593,10 @@
 
     <script>
         let foodItems = [
-            { id: 1, name: "Zinger Burger", emoji: "🍔", price: 5.99, desc: "Crispy chicken patty with spicy mayo" },
-            { id: 2, name: "Cheesy Pizza", emoji: "🍕", price: 9.99, desc: "Loaded with extra mozzarella cheese" },
-            { id: 3, name: "French Fries", emoji: "🍟", price: 2.99, desc: "Golden salted crispy potato fries" },
-            { id: 4, name: "Cold Drink", emoji: "🥤", price: 1.99, desc: "Chilled refreshing drink" }
+            { id: 1, name: "Zinger Burger", emoji: "🍔", imgSrc: null, price: 5.99, desc: "Crispy chicken patty with spicy mayo" },
+            { id: 2, name: "Cheesy Pizza", emoji: "🍕", imgSrc: null, price: 9.99, desc: "Loaded with extra mozzarella cheese" },
+            { id: 3, name: "French Fries", emoji: "🍟", imgSrc: null, price: 2.99, desc: "Golden salted crispy potato fries" },
+            { id: 4, name: "Cold Drink", emoji: "🥤", imgSrc: null, price: 1.99, desc: "Chilled refreshing drink" }
         ];
 
         let cart = [];
@@ -592,7 +607,9 @@
             const grid = document.getElementById('menuGrid');
             grid.innerHTML = foodItems.map(item => `
                 <div class="food-card glass">
-                    <div class="food-img-container">${item.emoji}</div>
+                    <div class="food-img-container">
+                        ${item.imgSrc ? `<img src="${item.imgSrc}" alt="${item.name}">` : item.emoji}
+                    </div>
                     <div class="food-info">
                         <h3>${item.name}</h3>
                         <p>${item.desc}</p>
@@ -610,18 +627,8 @@
             `).join('');
         }
 
-        // Left Drawer & Settings
+        // Left Drawer
         function toggleLeftDrawer() { document.getElementById('leftDrawer').classList.toggle('active'); }
-        function openSettingsModal() { document.getElementById('settingsModal').style.display = 'flex'; }
-        function closeSettingsModal() { document.getElementById('settingsModal').style.display = 'none'; }
-        function setViewMode(mode) {
-            if(mode === 'mobile') {
-                document.body.classList.add('mobile-view-frame');
-            } else {
-                document.body.classList.remove('mobile-view-frame');
-            }
-            closeSettingsModal();
-        }
 
         // Theme Switcher
         function openThemeModal() { document.getElementById('themeModal').style.display = 'flex'; }
@@ -653,7 +660,7 @@
                 return `
                     <div class="cart-item-row">
                         <div>
-                            <div style="font-weight:700;">${item.emoji} ${item.name}</div>
+                            <div style="font-weight:700;">${item.name}</div>
                             <div style="font-size:0.8rem; color:var(--secondary);">$${parseFloat(item.price).toFixed(2)}</div>
                         </div>
                         <i class="fa-solid fa-trash" style="color:var(--primary); cursor:pointer;" onclick="removeFromCart(${index})"></i>
@@ -690,12 +697,12 @@
             closeCheckoutModal();
         }
 
-        // Login & Admin
+        // Login & Admin Portal
         function openLoginModal() {
             if(isAdminLoggedIn) {
                 isAdminLoggedIn = false;
                 document.getElementById('adminPanel').style.display = 'none';
-                document.getElementById('authBtnText').innerText = 'Login';
+                document.getElementById('drawerAdminText').innerText = 'Admin Portal';
                 renderMenu();
                 return;
             }
@@ -709,7 +716,7 @@
             if(u === 'admin' && p === 'buymore123') {
                 isAdminLoggedIn = true;
                 document.getElementById('adminPanel').style.display = 'block';
-                document.getElementById('authBtnText').innerText = 'Logout';
+                document.getElementById('drawerAdminText').innerText = 'Logout Admin';
                 closeLoginModal();
                 renderMenu();
                 alert('Admin Logged In Successfully!');
@@ -748,13 +755,31 @@
             const emoji = document.getElementById('newItemEmoji').value || '🍕';
             const price = parseFloat(document.getElementById('newItemPrice').value);
             const desc = document.getElementById('newItemDesc').value;
+            const fileInput = document.getElementById('newItemFile');
+
             if(!name || isNaN(price)) return alert('Please enter item name and valid price');
-            foodItems.push({ id: Date.now(), name, emoji, price, desc });
-            renderMenu();
+
+            if(fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    foodItems.push({ id: Date.now(), name, emoji, imgSrc: e.target.result, price, desc });
+                    renderMenu();
+                    resetAdminForm();
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                foodItems.push({ id: Date.now(), name, emoji, imgSrc: null, price, desc });
+                renderMenu();
+                resetAdminForm();
+            }
+        }
+
+        function resetAdminForm() {
             document.getElementById('newItemName').value = '';
             document.getElementById('newItemEmoji').value = '';
             document.getElementById('newItemPrice').value = '';
             document.getElementById('newItemDesc').value = '';
+            document.getElementById('newItemFile').value = '';
             alert('New Item Added to Menu!');
         }
 
