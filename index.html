@@ -375,8 +375,4 @@ const savedTheme=localStorage.getItem("buymore_theme");if(savedTheme)setTheme(sa
 renderAll();
 </script>
 </body>
-</html>'''
-
-out = Path("/mnt/data/buy-more-premium-updated.html")
-out.write_text(html, encoding="utf-8")
-print(f"Created: {out} ({out.stat().st_size:,} bytes)")
+</html>
